@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: hsl(238, 27%, 12%);
+  --foreground: hsl(238, 27%, 12%);
 }
 
 @theme inline {
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: hsl(238, 27%, 12%);
+    --foreground: hsl(0, 0%, 100%);
   }
 }
 
@@ -23,4 +23,32 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  letter-spacing: -0.5px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding-bottom: 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #5E4B8B transparent;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+.scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #5E4B8B;
+  border-radius: 3px;
 }

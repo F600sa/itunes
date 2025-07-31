@@ -1,0 +1,61 @@
+version: '3.8'
+
+x-common-envs: &common-envs
+  DB_HOST: db
+  DB_USER: postgres
+  DB_PASSWORD: thmanyah123
+  DB_PORT: 5432
+  DB_NAME: thmanyah_db
+  APP_NAME: thmanyah
+
+x-common-build-volumes: &common-build-volumes
+  build:
+    context: .
+    dockerfile: ./Dockerfile
+  volumes:
+    - .:/app
+    - /app/node_modules
+  environment:
+    <<: *common-envs
+
+services:
+  db:
+    image: postgres:15
+    container_name: thmanyah-db
+    restart: always
+    ports:
+      - "5440:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: thmanyah123
+      POSTGRES_DB: thmanyah_db
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: thmanyah-pgadmin
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@thmanyah.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+
+  thmanyah-app:
+    <<: *common-build-volumes
+    container_name: thmanyah-app
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    command: >
+      sh -c "npx prisma generate &&
+             npx prisma db push &&
+             npm run dev"
+
+volumes:
+  postgres:
+  
