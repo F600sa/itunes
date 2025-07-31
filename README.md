@@ -32,6 +32,10 @@ This is a **Next.js** application for browsing, searching, and saving podcasts a
 git clone https://github.com/F600sa/itunes.git
 cd itunes
 ```
+## Create .env file on root 
+```
+DATABASE_URL="postgresql://postgres:thmanyah123@db:5432/thmanyah_db"
+```
 
 ### 2 Build docker
 ```bash

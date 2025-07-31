@@ -71,19 +71,20 @@ export default function Home() {
     loadAll(term);
   }, [term]);
 
-  if (loading) {
-    return (
-      <Loading />
-    );
-  }
 
   return (
     <div className="space-y-4">
       <Navbar />
-      <div className="pt-12 space-y-4">
-        <PodcastContainer data={tracks} />
-        <EpisodesContainer episodes={episodes} />
-      </div>
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <Loading />
+        </div>
+      ) : (
+        <div className="pt-12 space-y-4">
+          <PodcastContainer data={tracks} />
+          <EpisodesContainer episodes={episodes} />
+        </div>
+      )}
     </div>
   );
 }
