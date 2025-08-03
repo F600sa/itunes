@@ -17,7 +17,7 @@ export function hexToRgba(hexColor: string, alpha = 1) {
 }
 
 
-export function getBgColorById(id: number, alpha = 0.2) {
-  const idx = id % BG_COLORS.length;
+export function getBgColorById(id: number | string, alpha = 0.2) {
+  const idx = typeof id === 'number' ? id % BG_COLORS.length : 0;
   return hexToRgba(BG_COLORS[idx], alpha);
 }

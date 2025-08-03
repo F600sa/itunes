@@ -36,6 +36,14 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
+    console.log('> ENV DATABASE_URL =', process.env.DATABASE_URL);
+  try {
+    await prisma.$connect();
+    console.log('> DB connected successfully');
+  } catch (e) {
+    console.error('> Error connecting to DB:', e);
+    return NextResponse.json({ error: 'DB connect error' }, { status: 500 });
+  }
   try {
     const podcasts = await prisma.podcast.findMany({
       orderBy: { podcastId: 'asc' },

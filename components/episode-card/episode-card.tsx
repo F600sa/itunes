@@ -10,9 +10,10 @@ import { getBgColorById } from '@/utils/colors';
 type Props = {
     episode: Episode;
     isCarousel?: boolean;
+    onSelect?: (episode: Episode) => void;
 };
 
-export default function EpisodeCard({ episode, isCarousel }: Props) {
+export default function EpisodeCard({ episode, isCarousel, onSelect }: Props) {
     const date = new Date(episode.releaseDate).toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
@@ -21,6 +22,7 @@ export default function EpisodeCard({ episode, isCarousel }: Props) {
     const bgColor = getBgColorById(Number(episode.episodeId), 0.2);
     return (
         <div
+            onClick={() => onSelect?.(episode)}
             className={`
         ${isCarousel ? 'flex-shrink-0 w-[400px] ' : 'w-full'}
         h-32

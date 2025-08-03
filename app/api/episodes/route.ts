@@ -35,12 +35,19 @@ import { ITunesEpisode } from '@/types';
 
 export async function GET() {
   try {
+    await prisma.$connect();
+    console.log('> DB connected successfully');
+  } catch (e) {
+    console.error('> Error connecting to DB:', e);
+    return NextResponse.json({ error: 'DB connect error' }, { status: 500 });
+  }
+  try {
     const episodes = await prisma.episode.findMany({
       orderBy: { episodeId: 'asc' },
       take: 100,
     });
 
-    const safe = episodes.map((ep: { episodeId: { toString: () => ITunesEpisode; }; }) => ({
+    const safe = episodes.map(ep => ({
       ...ep,
       episodeId: ep.episodeId.toString(),
     }));
