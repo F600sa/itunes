@@ -76,11 +76,11 @@ export default function Home() {
     <div className="space-y-4">
       <Navbar />
       {loading ? (
-        <div className="flex justify-center items-center h-64">
+        <div className="flex justify-center items-center h-64 ">
           <Loading />
         </div>
       ) : (
-        <div className="pt-12 space-y-4">
+        <div className="pt-12 space-y-4 pb-24">
           <PodcastContainer data={tracks} />
           <EpisodesContainer episodes={episodes} />
         </div>

@@ -10,13 +10,14 @@ import { Episode } from '@/types';
 export type EpisodeItemProps = {
     episode: Episode;
     variant: 'compact' | 'list';
+    onSelect?: (episode: Episode) => void;
 };
 
-export default function EpisodeItem({ episode, variant }: EpisodeItemProps) {
+export default function EpisodeItem({ episode, variant, onSelect }: EpisodeItemProps) {
 
     if (variant === 'compact') {
         return (
-            <div className="flex items-center justify-between rounded-[3px] px-2 py-1 my-1 bg-transparent hover:bg-white/10 transition-colors">
+            <div onClick={() => onSelect?.(episode)} className="flex items-center justify-between rounded-[3px] px-2 py-1 my-1 bg-transparent hover:bg-white/10 transition-colors">
                 <div className="flex items-center gap-3">
                     <div className="w-12 h-12 flex-shrink-0 rounded-sm overflow-hidden bg-gray-700">
                         {episode.artworkUrl600 ? (
