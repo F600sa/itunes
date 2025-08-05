@@ -43,3 +43,5 @@ docker compose up --build
 ```
 
 VISIT APP ->  http://localhost:3000
+
+Live: https://itunes-azure.vercel.app
