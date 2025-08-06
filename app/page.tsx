@@ -1,24 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import Navbar from '@/components/Navbar/Navbar';
-import PodcastContainer from '@/containers/podcast-container/podcast-container';
-import EpisodesContainer from '@/containers/episodes-container/episodes-container';
-import { Episode, PodcastResult, PodcastType } from '@/types';
 
+import { useSearchParams } from 'next/navigation';
+
+import Navbar from '@/components/Navbar/Navbar';
+import EpisodesContainer from '@/containers/episodes-container/episodes-container';
+import PodcastContainer from '@/containers/podcast-container/podcast-container';
+import {
+  fetchEpisodesFromDB,
+  fetchEpisodesFromItunes,
+  saveEpisodesToDB,
+} from '@/services/episodeService';
 import {
   fetchPodcastsFromDB,
   searchPodcastsFromItunes,
   mapItunesPodcasts,
   savePodcastsToDB,
 } from '@/services/podcastService';
+import { Episode, PodcastResult, PodcastType } from '@/types';
 
-import {
-  fetchEpisodesFromDB,
-  fetchEpisodesFromItunes,
-  saveEpisodesToDB,
-} from '@/services/episodeService';
 import Loading from './loading';
 
 export default function Home() {
@@ -70,7 +71,6 @@ export default function Home() {
   useEffect(() => {
     loadAll(term);
   }, [term]);
-
 
   return (
     <div className="space-y-4">

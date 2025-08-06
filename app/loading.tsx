@@ -1,11 +1,11 @@
 'use client';
 
-import Spinner from "@/components/Spinner/Spinner";
+import Spinner from '@/components/Spinner/Spinner';
 
 export default function Loading() {
-    return (
-        <div className="min-h-screen flex items-center justify-center">
-            <Spinner />
-        </div>
-    )
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <Spinner />
+    </div>
+  );
 }

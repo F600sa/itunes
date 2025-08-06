@@ -1,0 +1,22 @@
+version: 1
+labels:
+
+  - label: 'type:feature'
+    title: '^feat'
+  - label: 'type:bug'
+    title: '^fix'
+  - label: 'type:refactoring'
+    title: '^ref'
+  - label: 'type:documentation'
+    title: '^doc'
+  - label: 'type:enhancement'
+    title: '^enh'
+  - label: 'type:chore'
+    title: '^chore'
+  - label: 'type:test'
+    title: '^test'
+
+  - label: 'priority:high'
+    title: '\[high-priority\]'
+  - label: 'priority:low'
+    title: '\[low-priority\]'

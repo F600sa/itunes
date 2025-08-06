@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: hsl(238, 27%, 12%);
@@ -25,13 +25,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-html, body {
+html,
+body {
   letter-spacing: -0.5px;
   overflow-y: auto;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
-
 
 .scroll-container {
   display: flex;
@@ -39,7 +39,7 @@ html, body {
   gap: 0.5rem;
   padding-bottom: 1.5rem;
   scrollbar-width: thin;
-  scrollbar-color: #5E4B8B transparent;
+  scrollbar-color: #5e4b8b transparent;
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -49,10 +49,9 @@ html, body {
   background: transparent;
 }
 .scroll-container::-webkit-scrollbar-thumb {
-  background-color: #5E4B8B;
+  background-color: #5e4b8b;
   border-radius: 3px;
 }
-
 
 .audio-range {
   -webkit-appearance: none;
