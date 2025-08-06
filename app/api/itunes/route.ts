@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import { prisma } from '@/lib/prisma';
 import { PodcastResult } from '@/types';
 
@@ -9,21 +10,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Invalid data' }, { status: 400 });
   }
 
- try {
+  try {
     const created = await prisma.podcast.createMany({
       data: body.map((item: PodcastResult) => ({
-        podcastId:         item.trackId,
-        artistId:          item.artistId       ?? null,
-        collectionId:      item.collectionId,
-        artistName:        item.artistName     ?? null,
-        trackName:         item.trackName      ?? '',
-        collectionName:       item.collectionName ?? '',
-        previewUrl:        item.previewUrl     ?? null,
-        artworkUrl600:     item.artworkUrl600  ?? null,
-        releaseDate:       new Date(item.releaseDate),
+        podcastId: item.trackId,
+        artistId: item.artistId ?? null,
+        collectionId: item.collectionId,
+        artistName: item.artistName ?? null,
+        trackName: item.trackName ?? '',
+        collectionName: item.collectionName ?? '',
+        previewUrl: item.previewUrl ?? null,
+        artworkUrl600: item.artworkUrl600 ?? null,
+        releaseDate: new Date(item.releaseDate),
         podcastTimeMillis: item.trackTimeMillis ?? 0,
-        primaryGenreName:  item.primaryGenreName ?? '',
-        isStreamable:      item.isStreamable   ?? false,
+        primaryGenreName: item.primaryGenreName ?? '',
+        isStreamable: item.isStreamable ?? false,
       })),
       skipDuplicates: true,
     });
@@ -36,7 +37,7 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
-    console.log('> ENV DATABASE_URL =', process.env.DATABASE_URL);
+  console.log('> ENV DATABASE_URL =', process.env.DATABASE_URL);
   try {
     await prisma.$connect();
     console.log('> DB connected successfully');

@@ -7,7 +7,6 @@ export const BG_COLORS = [
   '#7FDBFF',
 ] as const;
 
-
 export function hexToRgba(hexColor: string, alpha = 1) {
   const hex = hexColor.replace('#', '');
   const r = parseInt(hex.substring(0, 2), 16);
@@ -15,7 +14,6 @@ export function hexToRgba(hexColor: string, alpha = 1) {
   const b = parseInt(hex.substring(4, 6), 16);
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
-
 
 export function getBgColorById(id: number | string, alpha = 0.2) {
   const idx = typeof id === 'number' ? id % BG_COLORS.length : 0;

@@ -1,5 +1,3 @@
-
-
 # 🎧 Thmanyah iTunes Search App
 
 This is a **Next.js** application for browsing, searching, and saving podcasts and their episodes. It integrates with the iTunes Search API, stores results in a PostgreSQL database via Prisma, and provides a rich, responsive UI with multiple display modes.
@@ -8,10 +6,11 @@ This is a **Next.js** application for browsing, searching, and saving podcasts a
 
 ## 🚀 Features
 
-- 🔍 Search podcasts via iTunes public API  
-- 💾 Store podcast & episode data in PostgreSQL using Prisma ORM  
-- 🎨 modern UI with Tailwind CSS  
-- 🐳 Full Docker support for zero-effort setup  
+- 🔍 Search podcasts via iTunes public API
+- 💾 Store podcast & episode data in PostgreSQL using Prisma ORM
+- 🎨 modern UI with Tailwind CSS
+- 🐳 Full Docker support for zero-effort setup
+
 ---
 
 ## 🧰 Tech Stack
@@ -32,16 +31,19 @@ This is a **Next.js** application for browsing, searching, and saving podcasts a
 git clone https://github.com/F600sa/itunes.git
 cd itunes
 ```
-## Create .env file on root 
+
+## Create .env file on root
+
 ```
 DATABASE_URL="postgresql://postgres:thmanyah123@db:5432/thmanyah_db"
 ```
 
 ### 2 Build docker
+
 ```bash
 docker compose up --build
 ```
 
-VISIT APP ->  http://localhost:3000
+VISIT APP -> http://localhost:3000
 
 Live: https://itunes-azure.vercel.app

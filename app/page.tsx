@@ -1,31 +1,32 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import Navbar from '@/components/Navbar/Navbar';
-import PodcastContainer from '@/containers/podcast-container/podcast-container';
-import EpisodesContainer from '@/containers/episodes-container/episodes-container';
-import { Episode, PodcastResult, PodcastType } from '@/types';
 
+import { useSearchParams } from 'next/navigation';
+
+import Navbar from '@/components/Navbar/Navbar';
+import EpisodesContainer from '@/containers/episodes-container/episodes-container';
+import PodcastContainer from '@/containers/podcast-container/podcast-container';
+import {
+  fetchEpisodesFromDB,
+  fetchEpisodesFromItunes,
+  saveEpisodesToDB,
+} from '@/services/episodeService';
 import {
   fetchPodcastsFromDB,
   searchPodcastsFromItunes,
   mapItunesPodcasts,
   savePodcastsToDB,
 } from '@/services/podcastService';
+import { Episode, PodcastResult, PodcastType } from '@/types';
 
-import {
-  fetchEpisodesFromDB,
-  fetchEpisodesFromItunes,
-  saveEpisodesToDB,
-} from '@/services/episodeService';
 import Loading from './loading';
 
 export default function Home() {
   const term = useSearchParams().get('q') ?? '';
   const [tracks, setTracks] = useState<PodcastType[]>([]);
   const [episodes, setEpisodes] = useState<Episode[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   async function loadAll(q: string) {
     setLoading(true);
@@ -71,16 +72,15 @@ export default function Home() {
     loadAll(term);
   }, [term]);
 
-
   return (
     <div className="space-y-4">
       <Navbar />
       {loading ? (
-        <div className="flex justify-center items-center h-64 ">
+        <div className="flex h-64 items-center justify-center">
           <Loading />
         </div>
       ) : (
-        <div className="pt-12 space-y-4 pb-24">
+        <div className="space-y-4 pt-12 pb-24">
           <PodcastContainer data={tracks} />
           <EpisodesContainer episodes={episodes} />
         </div>
