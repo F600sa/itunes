@@ -1,10 +1,8 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-    images: {
-    domains: [
-      "is1-ssl.mzstatic.com",
-    ],
+  images: {
+    domains: ['is1-ssl.mzstatic.com'],
   },
   async rewrites() {
     return [

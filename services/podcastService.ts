@@ -9,7 +9,7 @@ export async function fetchPodcastsFromDB(): Promise<PodcastResult[]> {
 export async function searchPodcastsFromItunes(term: string): Promise<PodcastResult[]> {
   const res = await fetch(
     `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=podcast&limit=12`,
-    { cache: 'no-store' }
+    { cache: 'no-store' },
   );
   if (!res.ok) throw new Error('Failed to search podcasts on iTunes');
   const { results } = await res.json();
@@ -17,13 +17,13 @@ export async function searchPodcastsFromItunes(term: string): Promise<PodcastRes
 }
 
 export function mapItunesPodcasts(results: PodcastResult[]): PodcastType[] {
-  return results.map(r => ({
+  return results.map((r) => ({
     trackId: r.trackId,
     trackName: r.trackName,
     artistName: r.artistName,
     artworkUrl600: r.artworkUrl600 ?? '',
     previewUrl: r.previewUrl,
-    collectionName:  r.collectionName,
+    collectionName: r.collectionName,
     artistId: r.artistId ?? null,
     collectionId: r.collectionId,
     releaseDate: r.releaseDate,

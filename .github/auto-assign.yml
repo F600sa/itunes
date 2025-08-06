@@ -1,0 +1,8 @@
+addReviewers: true
+addAssignees: true
+reviewers:
+  - f600sa
+assignees:
+  - f600sa
+numberOfReviewers: 1
+numberOfAssignees: 1
